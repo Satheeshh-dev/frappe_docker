@@ -1,6 +1,10 @@
-FROM frappe/bench:v5.15.0
+FROM frappe/bench:latest
 
 WORKDIR /home/frappe/frappe-bench
+
+# Get core apps
+RUN bench get-app erpnext --branch version-15
+RUN bench get-app payments
 
 EXPOSE 8000
 
