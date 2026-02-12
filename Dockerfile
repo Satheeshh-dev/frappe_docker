@@ -1,17 +1,4 @@
-FROM frappe/bench:py3.10
-
-WORKDIR /home/frappe
-
-# 1. Initialize bench (skip redis config for Railway)
-RUN bench init frappe-bench \
-    --frappe-branch version-15 \
-    --skip-redis-config-generation
-
-WORKDIR /home/frappe/frappe-bench
-
-# 2. Get core apps
-RUN bench get-app erpnext --branch version-15
-RUN bench get-app payments
+FROM frappe/erpnext:version-15
 
 EXPOSE 8000
 
