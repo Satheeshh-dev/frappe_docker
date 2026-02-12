@@ -1,8 +1,8 @@
-FROM frappe/bench:latest
+FROM frappe/bench:py3.10
 
 WORKDIR /home/frappe
 
-# 1. Initialize bench WITHOUT redis auto-config
+# 1. Initialize bench (skip redis config for Railway)
 RUN bench init frappe-bench \
     --frappe-branch version-15 \
     --skip-redis-config-generation
